@@ -49,8 +49,10 @@ console.log(transactions)
       <Column field="created_date" header="Дата"></Column>
       <Column field="id" header="Управление">
         <template #body="slotProps">
-          <span>{{ slotProps.data.id }}</span>
-          <div class="controls"><EditTransaction /> <DeleteTransaction /></div>
+          <div class="controls">
+            <EditTransaction :transactionId="slotProps.data.id" />
+            <DeleteTransaction :transactionId="slotProps.data.id" />
+          </div>
         </template>
       </Column>
     </DataTable>
