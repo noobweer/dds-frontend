@@ -8,6 +8,13 @@ export const useTransactionsStore = defineStore('transactions', {
     types: [],
     categories: [],
     subcategories: [],
+    filters: {
+      date: [],
+      status: [],
+      type: [],
+      category: [],
+      subcategory: [],
+    },
   }),
 
   getters: {
@@ -138,7 +145,7 @@ export const useTransactionsStore = defineStore('transactions', {
     },
 
     async applyFilters() {
-      await this.fetchAds(this.filters)
+      await this.fetchTransactions(this.filters)
     },
   },
 })

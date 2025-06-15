@@ -5,6 +5,7 @@ import Column from 'primevue/column'
 import CreateTransaction from '@/components/CreateTransaction.vue'
 import EditTransaction from '@/components/EditTransaction.vue'
 import DeleteTransaction from '@/components/DeleteTransaction.vue'
+import FilterTransactions from '@/components/FilterTransactions.vue'
 import router from '@/router'
 import { computed } from 'vue'
 import { useTransactionsStore } from '@/stores/transactionsStore'
@@ -25,7 +26,6 @@ const pushReferences = () => {
 const transactionsStore = useTransactionsStore()
 
 const transactions = computed(() => transactionsStore.getTransactions)
-console.log(transactions)
 </script>
 
 <template>
@@ -42,6 +42,9 @@ console.log(transactions)
           <Button variant="text" @click="pushLogin" size="small">
             <span>Выйти из аккаунта</span> <DoorOpen />
           </Button>
+        </div>
+        <div class="filters">
+          <FilterTransactions />
         </div>
       </template>
       <Column field="status.name" header="Статус"></Column>
@@ -72,5 +75,8 @@ console.log(transactions)
   display: flex;
   flex-direction: row;
   gap: 0.5rem;
+}
+.filters {
+  margin-top: 1rem;
 }
 </style>

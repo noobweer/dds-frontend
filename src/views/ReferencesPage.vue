@@ -26,7 +26,7 @@ import CreateSubcategory from '@/components/CreateSubcategory.vue'
 import EditSubcategory from '@/components/EditSubcategory.vue'
 
 import { useTransactionsStore } from '@/stores/transactionsStore'
-import { ChartNoAxesColumn } from 'lucide-vue-next'
+import { ChartNoAxesColumn, ChartColumnStacked, Workflow, SendToBack } from 'lucide-vue-next'
 import { DoorOpen } from 'lucide-vue-next'
 import { computed } from 'vue'
 
@@ -51,15 +51,15 @@ const pushTransactions = () => {
           <span>Статусы</span>
         </Tab>
         <Tab :value="1" class="flex items-center gap-2">
-          <ChartNoAxesColumn />
+          <Workflow />
           <span>Типы операций</span>
         </Tab>
         <Tab :value="2" class="flex items-center gap-2">
-          <ChartNoAxesColumn />
+          <ChartColumnStacked />
           <span>Категории</span>
         </Tab>
         <Tab :value="3" class="flex items-center gap-2">
-          <ChartNoAxesColumn />
+          <SendToBack />
           <span>Подкатегории</span>
         </Tab>
         <Tab :value="4" @click="pushTransactions" class="flex items-center gap-2">

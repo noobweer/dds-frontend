@@ -33,6 +33,12 @@ const login = async () => {
     })
 
     if (response.data.access && response.data.refresh) {
+      toast.add({
+        severity: 'success',
+        summary: 'Авторизации прошли успешно',
+        detail: 'Перенаправляем на главную страницу',
+        life: 3000,
+      })
       localStorage.setItem('access_token', response.data.access)
       localStorage.setItem('refresh_token', response.data.refresh)
       checkAuthInitData()

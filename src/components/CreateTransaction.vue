@@ -133,7 +133,7 @@ const createTransaction = async () => {
 
 <template>
   <Button variant="text" @click="visible = true" size="small">
-    <span>Создать тразакцию</span> <CirclePlus />
+    <span>Создать транзакцию</span> <CirclePlus />
   </Button>
 
   <Dialog v-model:visible="visible" modal header="Создать транзакцию" class="sm:w-100 w-9/10">
