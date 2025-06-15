@@ -15,14 +15,14 @@ const toast = useToast()
 
 const visible = ref(false)
 const categoryName = ref('')
-const types = computed(() => transactionsStore.getTypes)
-const selectedType = ref()
+const categories = computed(() => transactionsStore.getCategories)
+const selectedCategory = ref()
 
 const createCategory = async () => {
-  if (!categoryName.value || !selectedType.value[0].id) {
+  if (!categoryName.value || !selectedCategory.value[0].id) {
     toast.add({
       severity: 'error',
-      summary: 'Ошибка при создании категории',
+      summary: 'Ошибка при создании подкатегории',
       detail: 'Заполните все поля',
       life: 3000,
     })
@@ -30,24 +30,24 @@ const createCategory = async () => {
   }
 
   try {
-    const response = await apiClient.post('create-category/', {
+    const response = await apiClient.post('create-subcategory/', {
       name: categoryName.value,
-      type_id: selectedType.value[0].id,
+      category_id: selectedCategory.value[0].id,
     })
 
     if (response.data.is_created) {
       toast.add({
         severity: 'success',
-        summary: 'Категория успешно создана',
+        summary: 'Подкатегория успешно создана',
         detail: 'Операция выполнена успешно',
         life: 3000,
       })
-      transactionsStore.fetchCategories()
+      transactionsStore.fetchSubcategories()
       visible.value = false
     } else {
       toast.add({
         severity: 'warn',
-        summary: 'Невозможно создать категорию',
+        summary: 'Невозможно создать подкатегорию',
         detail: response.data.message,
         life: 3000,
       })
@@ -56,7 +56,7 @@ const createCategory = async () => {
     console.error(error)
     toast.add({
       severity: 'error',
-      summary: 'Ошибка при создании категории',
+      summary: 'Ошибка при создании подкатегории',
       detail: 'Поля неверно заполнены',
       life: 3000,
     })
@@ -66,19 +66,19 @@ const createCategory = async () => {
 
 <template>
   <Button variant="text" @click="visible = true" size="small">
-    <span>Добавить категорию</span> <CirclePlus />
+    <span>Добавить подкатегорию</span> <CirclePlus />
   </Button>
 
-  <Dialog v-model:visible="visible" modal header="Создать категорию" class="sm:w-100 w-9/10">
+  <Dialog v-model:visible="visible" modal header="Создать подкатегорию" class="sm:w-100 w-9/10">
     <div class="inputs">
       <InputText v-model="categoryName" placeholder="Введите название" class="w-full" />
 
       <MultiSelect
-        v-model="selectedType"
-        :options="types"
+        v-model="selectedCategory"
+        :options="categories"
         optionLabel="name"
         filter
-        placeholder="Тип операции относящийся к категории"
+        placeholder="Категория относящаяся к подкатегории"
         :maxSelectedLabels="1"
         :selectionLimit="1"
         class="w-full"

@@ -19,6 +19,11 @@ import EditType from '@/components/EditType.vue'
 
 import DeleteCategory from '@/components/DeleteCategory.vue'
 import CreateCategory from '@/components/CreateCategory.vue'
+import EditCategory from '@/components/EditCategory.vue'
+
+import DeleteSubcategory from '@/components/DeleteSubcategory.vue'
+import CreateSubcategory from '@/components/CreateSubcategory.vue'
+import EditSubcategory from '@/components/EditSubcategory.vue'
 
 import { useTransactionsStore } from '@/stores/transactionsStore'
 import { ChartNoAxesColumn } from 'lucide-vue-next'
@@ -96,17 +101,32 @@ const pushTransactions = () => {
             <Column field="id" header="ID"></Column>
             <Column field="id" header="Управление">
               <template #body="slotProps">
-                <EditType :id="slotProps.data.id" :name="slotProps.data.name" />
+                <EditCategory
+                  :id="slotProps.data.id"
+                  :name="slotProps.data.name"
+                  :type="slotProps.data.type"
+                />
                 <DeleteCategory :categoryId="slotProps.data.id" />
               </template>
             </Column>
           </DataTable>
         </TabPanel>
         <TabPanel :value="3">
+          <CreateSubcategory />
           <DataTable :value="subcategories">
             <Column field="name" header="Название подкатегории"></Column>
             <Column field="category.name" header="Относится к категории"></Column>
             <Column field="id" header="ID"></Column>
+            <Column field="id" header="Управление">
+              <template #body="slotProps">
+                <EditSubcategory
+                  :id="slotProps.data.id"
+                  :name="slotProps.data.name"
+                  :category="slotProps.data.category"
+                />
+                <DeleteSubcategory :subcategoryId="slotProps.data.id" />
+              </template>
+            </Column>
           </DataTable>
         </TabPanel>
       </TabPanels>
