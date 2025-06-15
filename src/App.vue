@@ -40,8 +40,16 @@ onMounted(async () => {
 </script>
 
 <template>
-  <Toast />
-  <router-view></router-view>
+  <div class="container">
+    <Toast />
+    <router-view></router-view>
+  </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.container {
+  width: 100%;
+  height: 100vh;
+  background: #18181b;
+}
+</style>

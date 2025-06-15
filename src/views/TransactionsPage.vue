@@ -10,11 +10,16 @@ import { computed } from 'vue'
 import { useTransactionsStore } from '@/stores/transactionsStore'
 
 import { DoorOpen } from 'lucide-vue-next'
+import { FileSliders } from 'lucide-vue-next'
 
 const pushLogin = () => {
   localStorage.removeItem('access_token')
   localStorage.removeItem('refresh_token')
   router.push({ name: 'LoginPage' })
+}
+
+const pushReferences = () => {
+  router.push({ name: 'ReferencesPage' })
 }
 
 const transactionsStore = useTransactionsStore()
@@ -30,9 +35,12 @@ console.log(transactions)
         <div class="flex flex-wrap items-center justify-between gap-2">
           <div class="controls">
             <CreateTransaction />
+            <Button variant="text" @click="pushReferences" size="small">
+              <span>Управление справочниками</span> <FileSliders />
+            </Button>
           </div>
           <Button variant="text" @click="pushLogin" size="small">
-            <span>Выйти</span> <DoorOpen />
+            <span>Выйти из аккаунта</span> <DoorOpen />
           </Button>
         </div>
       </template>
