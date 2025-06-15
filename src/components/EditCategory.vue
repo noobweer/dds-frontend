@@ -42,7 +42,7 @@ const createCategory = async () => {
       type_id: selectedType.value[0].id,
     })
 
-    if (response.data.is_created) {
+    if (response.data.is_edited) {
       toast.add({
         severity: 'success',
         summary: 'Категория успешно изменена',

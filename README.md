@@ -1,14 +1,23 @@
-# dds-frontend
+## Frontend тестового задания: Веб-сервис для управления движением денежных средств 🥰
 
-This template should help get you started developing with Vue 3 in Vite.
+- Также прошу обратить внимание, что есть репозиторий backend данного проекта:
+- [Backend репозиторий (dds-manager)](https://github.com/noobweer/dds-manager)
 
-## Recommended IDE Setup
+![Скриншот фронтенда](https://i.imgur.com/CcJM5Ri.png)
+![Скриншот фронтенда](https://i.imgur.com/sWDdV54.png)
+![Скриншот фронтенда](https://i.imgur.com/OAapgBa.png)
+![Скриншот фронтенда](https://i.imgur.com/xUbVw9n.png)
+![Скриншот фронтенда](https://i.imgur.com/ANMDrLO.png)
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+```
+Стек фронтенда:
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
+VueJS + Vite
+Pinia (State manager для удобного хранения данных)
+Vue Router
+Axios (Для запросов на backend)
+Volt (UI Component Library для красивого интерфейса)
+```
 
 ## Project Setup
 

@@ -11,7 +11,13 @@ export async function checkAuthInitData() {
 
   try {
     console.log('Initializing data for authenticated user...')
-    await Promise.all([transactionsStore.fetchTransactions()])
+    await Promise.all([
+      transactionsStore.fetchTransactions(),
+      transactionsStore.getCategories(),
+      transactionsStore.getTypes(),
+      transactionsStore.getSubcategories(),
+      transactionsStore.getStatuses(),
+    ])
     console.log('All data initialized successfully.')
     return true
   } catch (error) {
@@ -19,7 +25,13 @@ export async function checkAuthInitData() {
       const isTokenRefreshed = await refreshAuthToken()
       if (isTokenRefreshed) {
         console.log('Token refreshed successfully. Retrying fetchAllPools...')
-        await Promise.all([transactionsStore.fetchTransactions()])
+        await Promise.all([
+          transactionsStore.fetchTransactions(),
+          transactionsStore.getCategories(),
+          transactionsStore.getTypes(),
+          transactionsStore.getSubcategories(),
+          transactionsStore.getStatuses(),
+        ])
         console.log('All data initialized successfully after token refresh.')
         return true
       } else {
